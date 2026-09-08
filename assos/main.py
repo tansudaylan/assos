@@ -1416,7 +1416,7 @@ def setp_modlemis_finl(gdat, strgmodl):
                 for m in gdat.indxdqlt:
                     meansigc = gmod.psfpexpr[i * gmod.numbpsfptotl + m * gmod.numbpsfptotl * gdat.numbener]
                     stdvsigc = meansigc * 0.1
-                    setp_varb(gdat, 'sigcen%02devt%d' % (i, m), mean=meansigc, stdv=stdvsigc, labl=['$\sigma$', ''], scal='gaus', strgmodl=strgmodl)
+                    setp_varb(gdat, 'sigcen%02devt%d' % (i, m), mean=meansigc, stdv=stdvsigc, labl=[r'$\sigma$', ''], scal='gaus', strgmodl=strgmodl)
                     
                     if gmod.typemodlpsfn == 'doubking' or gmod.typemodlpsfn == 'singking':
                         meangamc = gmod.psfpexpr[i * numbpsfpform + m * numbpsfpform * gdat.numbener + 1]
@@ -1447,7 +1447,7 @@ def setp_modlemis_finl(gdat, strgmodl):
                 maxmsigm = 2. / gdat.anglfact
             minmgamm = 1.5
             maxmgamm = 20.
-            setp_varb(gdat, 'sigc', valu= 0.05/gdat.anglfact, minm=minmsigm, maxm=maxmsigm, labl=['$\sigma_c$', ''], ener='full', dqlt='full', strgmodl=strgmodl, strgstat='this')
+            setp_varb(gdat, 'sigc', valu= 0.05/gdat.anglfact, minm=minmsigm, maxm=maxmsigm, labl=[r'$\sigma_c$', ''], ener='full', dqlt='full', strgmodl=strgmodl, strgstat='this')
             setp_varb(gdat, 'sigt', minm=minmsigm, maxm=maxmsigm, ener='full', dqlt='full', strgmodl=strgmodl)
             setp_varb(gdat, 'gamc', minm=minmgamm, maxm=maxmgamm, ener='full', dqlt='full', strgmodl=strgmodl)
             setp_varb(gdat, 'gamt', minm=minmgamm, maxm=maxmgamm, ener='full', dqlt='full', strgmodl=strgmodl)
