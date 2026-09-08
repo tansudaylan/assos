@@ -1,0 +1,11 @@
+LICENSE
+README.md
+pyproject.toml
+assos/__init__.py
+assos/main.py
+assos.egg-info/PKG-INFO
+assos.egg-info/SOURCES.txt
+assos.egg-info/dependency_links.txt
+assos.egg-info/requires.txt
+assos.egg-info/top_level.txt
+tests/tests.py

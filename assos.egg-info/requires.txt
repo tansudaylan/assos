@@ -1,0 +1,9 @@
+aspendos
+astropy
+astroquery
+chalcedon
+matplotlib
+nicomedia
+numpy
+scipy
+tdpy

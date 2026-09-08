@@ -164,20 +164,18 @@ def init( \
     gdat.strgcntp = gdat.datatype
 
     # paths
-    ## read PCAT path environment variable
-    gdat.pathbase = os.environ['ASSOS_DATA_PATH'] + '/'
-    gdat.pathdata = gdat.pathbase + 'data/'
-    gdat.pathimag = gdat.pathbase + 'imag/'
+    ## read ASSOS path environment variable
+    gdat.pathbase = tdpy.retr_pathbase('assos')
+    gdat.pathdata = tdpy.ensr_path(os.path.join(gdat.pathbase, 'data'))
+    gdat.pathimag = tdpy.ensr_path(os.path.join(gdat.pathbase, 'imag'))
     ## define paths
     #gdat.pathdataorig = '/pdo/qlp-data/orbit-%d/ffi/cam%d/ccd%d/FITS/' % (isec, icam, iccd)
-    gdat.pathdataorig = gdat.pathdata + 'ffis/'
-    gdat.pathdatafilt = gdat.pathdata + 'filt/'
-    gdat.pathdatainit = gdat.pathdata + 'init/'
-    gdat.pathdatainitimag = gdat.pathdatainit + 'imag/'
-    gdat.pathdatainitanim = gdat.pathdatainit + 'anim/'
-    gdat.pathdatacomm = gdat.pathdata + 'comm/'
-    ## make folders 
-    os.system('mkdir -p %s' % gdat.pathdatafilt)
+    gdat.pathdataorig = tdpy.ensr_path(os.path.join(gdat.pathdata, 'ffis'))
+    gdat.pathdatafilt = tdpy.ensr_path(os.path.join(gdat.pathdata, 'filt'))
+    gdat.pathdatainit = tdpy.ensr_path(os.path.join(gdat.pathdata, 'init'))
+    gdat.pathdatainitimag = tdpy.ensr_path(os.path.join(gdat.pathdatainit, 'imag'))
+    gdat.pathdatainitanim = tdpy.ensr_path(os.path.join(gdat.pathdatainit, 'anim'))
+    gdat.pathdatacomm = tdpy.ensr_path(os.path.join(gdat.pathdata, 'comm'))
     
     gdat.numbsidefilt = 21
 
@@ -946,30 +944,7 @@ def plot_peri():
     plt.savefig(path)
     plt.close()
 
-def plot_catl(gdat, axis, indxsideyposoffs=0, indxsidexposoffs=0):
-
-    try:
-        for k in range(gdat.numbpositext):
-            axis.text(gdat.indxsideyposdataflat[gdat.indxdatascorsort[k]] - indxsideyposoffs + gdat.numbsideedge, \
-                      gdat.indxsidexposdataflat[gdat.indxdatascorsort[k]] - indxsidexposoffs + gdat.numbsideedge, '%d' % k, size=7, color='b', alpha=0.3)
-    except:
-        pass
-
-    if gdat.datatype == 'mock':
-
-        for k in gdat.indxsour:
-            axis.text(np.mean(gdat.trueypos[:, k]) - indxsideyposoffs, \
-                      np.mean(gdat.truexpos[:, k]) - indxsidexposoffs, '*', alpha=0.1, size=15, color='y', ha='center', va='center')
-            #axis.text(np.mean(gdat.trueypos[:, k]) - indxsideyposoffs + 0.5, \
-            #          np.mean(gdat.truexpos[:, k]) - indxsidexposoffs + 0.5, '%.3g, %.3g' % (gdat.truemagtmean[k], gdat.truemagtstdv[k]), \
-            #                                                        alpha=0.3, size=5, color='y', ha='center', va='center')
-
-        for k in gdat.indxsoursupn:
-            axis.text(np.mean(gdat.trueypos[:, k]) - indxsideyposoffs, \
-                      np.mean(gdat.truexpos[:, k]) - indxsidexposoffs, '*', alpha=0.1, size=15, color='g', ha='center', va='center')
-            axis.text(np.mean(gdat.trueypos[:, k]) - indxsideyposoffs + 0.5, \
-                      np.mean(gdat.truexpos[:, k]) - indxsidexposoffs + 0.5, '%.3g, %.3g' % (gdat.truemagtmean[k], gdat.truemagtstdv[k]), \
-                                                                                                alpha=0.1, size=5, color='g', ha='center', va='center')
+plot_catl = tdpy.plot_catl
 
 
 
