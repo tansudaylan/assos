@@ -15,7 +15,10 @@ Assos sits in the imaging and forward-modeling layer of the active stack. It bui
 ```bash
 cd assos
 python -m pip install -e .
+export ASSOS_PATH=/path/to/assos
 ```
+
+`ASSOS_PATH` identifies the repository root. Keep runtime inputs in `data/` and generated pipeline outputs in `visuals/`; both directories are ignored by Git.
 
 ## Minimal workflow
 
