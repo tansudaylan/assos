@@ -22,21 +22,20 @@ export ASSOS_PATH=/path/to/assos
 
 ## Minimal workflow
 
-The project is organized around reusable functions rather than long standalone scripts. The most important package entry points are accessed through the library interface and the core modeling routines in `assos/main.py`.
+The runnable forward-modeling example constructs an explicitly simulated two-source scene and passes it through Assos's normalized Gaussian point-spread function convolution:
 
-A lightweight smoke check is intended to confirm that the library loads and exposes its main entry points without requiring a full imaging dataset:
-
-```python
-import assos
-from assos.main import plot_imag
-
-print(hasattr(assos, '__file__'))
-print(callable(plot_imag))
+```bash
+python examples/psf_forward_model.py --typefileplot png
 ```
+
+![Assos simulated PSF forward model](examples/psf_forward_model.png)
+
+The panels expose the intrinsic source scene, the normalized point-spread function kernel, and the final detector image after convolution and addition of a uniform background. The two sources, their flux rates, the 1.5-pixel point-spread width, and the background rate are explicit simulation assumptions. The figure contains no observed data.
 
 ## Main modules
 
-- `assos/main.py`: imaging forward-modeling routines, plotting diagnostics, and workflow initialization.
+- `assos/imaging.py`: tested image-formation primitives.
+- `assos/main.py`: legacy imaging workflows and plotting diagnostics.
 - `tests/`: lightweight import and compatibility checks.
 
 ## Dependencies

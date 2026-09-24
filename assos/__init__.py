@@ -5,6 +5,7 @@ keeping the package boundary explicit and import-safe for downstream projects.
 """
 
 from .main import *
+from .imaging import forward_model_image
 from .paths import get_data_path, get_repository_path, get_visuals_path
 
 __all__ = [
