@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 """Demonstrate Assos image formation with a labeled two-source simulation."""
 
-import argparse
 from pathlib import Path
 
 import matplotlib
@@ -12,6 +11,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 import assos
+from tdpy.cli import parse_plot_arguments
 
 
 IMAGE_SIZE_PIXELS = 51
@@ -124,16 +124,10 @@ def run_example(output_path: Path) -> dict[str, np.ndarray]:
     return products
 
 
-def parse_arguments() -> argparse.Namespace:
-    parser = argparse.ArgumentParser(
+def parse_arguments():
+    return parse_plot_arguments(
         description="Plot Assos's simulated PSF image-formation pipeline."
     )
-    parser.add_argument(
-        "--typefileplot",
-        choices=("png", "pdf"),
-        default="png",
-    )
-    return parser.parse_args()
 
 
 def main() -> int:
