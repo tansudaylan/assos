@@ -56,7 +56,3 @@ The package depends on the standard scientific stack and imaging utilities, incl
 
 Assos is intended to make imaging transformations and model assumptions visible through saved diagnostic figures. The main scientific emphasis is on keeping the model-data relationship inspectable rather than hiding it inside opaque processing steps.
 
-## Development status
-
-This repository is maintained as a focused imaging and forward-modeling workflow rather than a general-purpose analysis dump. It remains useful when used with the appropriate data products and parameter conventions, and its reusable functions should remain library-first rather than being spread across ad hoc scripts.
-
