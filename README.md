@@ -32,12 +32,6 @@ python examples/psf_forward_model.py --typefileplot png
 
 The panels expose the intrinsic source scene, the normalized point-spread function kernel, and the final detector image after convolution and addition of a uniform background. The two sources, their flux rates, the 1.5-pixel point-spread width, and the background rate are explicit simulation assumptions. The figure contains no observed data.
 
-## Main modules
-
-- `assos/imaging.py`: tested image-formation primitives.
-- `assos/main.py`: legacy imaging workflows and plotting diagnostics.
-- `tests/`: lightweight import and compatibility checks.
-
 ## Dependencies
 
 The package depends on the standard scientific stack and imaging utilities, including:
@@ -54,5 +48,5 @@ The package depends on the standard scientific stack and imaging utilities, incl
 
 ## Output behavior
 
-Assos is intended to make imaging transformations and model assumptions visible through saved diagnostic figures. The main scientific emphasis is on keeping the model-data relationship inspectable rather than hiding it inside opaque processing steps.
+Assos saves the intrinsic source scene, point-spread function, predicted detector image, and residual diagnostics needed to inspect the image-formation model.
 
