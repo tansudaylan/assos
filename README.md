@@ -2,7 +2,7 @@
 
 Assos is a forward-modeling package for imaging data in the active astrophysics ecosystem. It is designed to synthesize observational imaging products, apply model-driven diagnostics, and provide a reproducible path from input image assumptions to transformed, diagnostic, and summary outputs.
 
-## Scientific purpose
+## Purpose
 
 The package supports imaging-domain forward modeling for astrophysical scenes and catalog-level overlays. The core workflow is to construct a synthetic image or parameterized field, model the relevant structure, and visualize the result alongside diagnostic annotations or residual diagnostics.
 
