@@ -35,7 +35,6 @@ import astropy
 import astropy.convolution
 
 import tdpy
-import aspendos
 import chalcedon
 import nicomedia
 from tdpy import summgene
@@ -1930,7 +1929,7 @@ def setp_modlemis_finl(gdat, strgmodl):
 
         gmod.adislens = gdat.adisobjt(gmod.redshost)
         gmod.adissour = gdat.adisobjt(gmod.redssour)
-        gmod.adislenssour = gmod.adissour - (1. + gmod.redshost) / (1. + gmod.redssour) * gmod.adislens
+        gmod.adislenssour = chalcedon.retr_adislenssour(gmod.adislens, gmod.adissour, gmod.redshost, gmod.redssour)
         gmod.ratimassbeinsqrd = chalcedon.retr_ratimassbeinsqrd(gmod.adissour, gmod.adislens, gmod.adislenssour)
         gmod.mdencrit = chalcedon.retr_mdencrit(gmod.adissour, gmod.adislens, gmod.adislenssour)
     
@@ -2299,7 +2298,7 @@ def eval_emislens( \
         dictchalinpt['beinhost'] = beinhost[e]
         dictchalinpt['ellphost'] = ellphost[e]
         dictchalinpt['anglhost'] = anglhost[e]
-        deflhost[e] = chalcedon.retr_defl(gdat.xposgrid, gdat.yposgrid, indxpixl, dictchalinpt)
+        deflhost[e] = chalcedon.retr_deflsie(gdat.xposgrid[indxpixl], gdat.yposgrid[indxpixl], xposhost[e], yposhost[e], beinhost[e], ellphost[e], anglhost[e])
          
         if gdat.booldiag:
             if not np.isfinite(deflhost[e]).all():
@@ -2449,12 +2448,8 @@ def eval_emislens( \
                     indxpixltemp = listindxpixlelem[l][k]
                 else:
                     indxpixltemp = indxpixl
-                print('chalcedon.retr_defl(xposgridflat, yposgridflat, indxpixltemp, dictchalinpt)')
-                summgene(chalcedon.retr_defl(xposgridflat, yposgridflat, indxpixltemp, dictchalinpt))
-                print('deflsubh[indxpixl, :]')
-                summgene(deflsubh[indxpixl, :])
-                dictchaloutp = chalcedon.retr_defl(xposgridflat, yposgridflat, indxpixltemp, dictchalinpt)
-                deflsubh[indxpixl, :] += dictchaloutp['defltotl']
+                deflsubh[indxpixltemp, :] += chalcedon.retr_deflsubh(xposgridflat[indxpixltemp], yposgridflat[indxpixltemp], \
+                                                dictchalinpt['xpossubh'][k], dictchalinpt['ypossubh'][k], dictchalinpt['defssubh'][k], asca, acut)
 
             # temp -- find out what is causing the features in the element convergence maps
             #for k, k in enumerate(indxelem[l]):

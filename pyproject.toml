@@ -20,7 +20,6 @@ classifiers = [
   "Topic :: Scientific/Engineering :: Astronomy"
 ]
 dependencies = [
-  "aspendos",
   "astropy",
   "astroquery",
   "chalcedon",

@@ -44,7 +44,6 @@ The package depends on the standard scientific stack and imaging utilities, incl
 - `tdpy`
 - `chalcedon`
 - `nicomedia`
-- `aspendos`
 
 ## Output behavior
 
