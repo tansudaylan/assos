@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 """Demonstrate Assos image formation with a labeled two-source simulation."""
 
+from tdpy.verbosity import print
+
 from pathlib import Path
 
 import matplotlib
