@@ -1,14 +1,14 @@
 # Assos
 
-Assos is a forward-modeling package for astrophysical imaging data. It synthesizes detector images from explicit source, background, and point-spread-function assumptions and produces diagnostics that expose each stage of the image-formation calculation.
+Assos provides higher-level imaging workflows and catalog overlays. Its reusable Gaussian point-spread-function image model is owned by PCAT as ``pcat.image.forward_model_image``; ``assos.forward_model_image`` remains an import-compatible alias.
 
 ## Purpose
 
-The package supports imaging-domain forward modeling for astrophysical scenes and catalog-level overlays. The core workflow is to construct a synthetic image or parameterized field, model the relevant structure, and visualize the result alongside diagnostic annotations or residual diagnostics.
+The package retains its imaging workflows and catalog-level overlays. For deterministic Gaussian-PSF scene modeling, use PCAT's image module; the Assos import path delegates to the same implementation.
 
 ## Image forward modeling
 
-Assos constructs parameterized source scenes, convolves them with normalized point-spread functions, adds detector backgrounds, and compares intrinsic scenes with their predicted detector images.
+``forward_model_image`` accepts a two-dimensional source image, Gaussian PSF width in pixels, and an optional uniform background. It returns the intrinsic scene, normalized PSF kernel, and predicted detector image. It is deterministic and does not sample parameters or add Poisson noise.
 
 ## Installation
 
@@ -17,6 +17,9 @@ cd assos
 python -m pip install -e .
 export ASSOS_PATH=/path/to/assos
 ```
+
+Assos depends on PCAT. For a local workspace checkout, install the PCAT source
+before installing Assos in the same environment.
 
 `ASSOS_PATH` identifies the repository root. Keep runtime inputs in `data/` and generated pipeline outputs in `visuals/`; both directories are ignored by Git.
 
@@ -44,6 +47,7 @@ The package depends on the standard scientific stack and imaging utilities, incl
 - `tdpy`
 - `chalcedon`
 - `nicomedia`
+- `pcat`
 
 ## Output behavior
 

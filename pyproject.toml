@@ -26,6 +26,7 @@ dependencies = [
   "matplotlib",
   "nicomedia",
   "numpy",
+  "pcat",
   "scipy",
   "tdpy"
 ]
