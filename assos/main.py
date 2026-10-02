@@ -167,7 +167,7 @@ def init( \
     ## read ASSOS path environment variable
     gdat.pathbase = tdpy.retr_pathbase('assos')
     gdat.pathdata = tdpy.ensr_path(os.path.join(gdat.pathbase, 'data'))
-    gdat.pathimag = tdpy.ensr_path(os.path.join(gdat.pathbase, 'imag'))
+    gdat.pathimag = tdpy.ensr_path(os.path.join(gdat.pathbase, 'visuals'))
     ## define paths
     #gdat.pathdataorig = '/pdo/qlp-data/orbit-%d/ffi/cam%d/ccd%d/FITS/' % (isec, icam, iccd)
     gdat.pathdataorig = tdpy.ensr_path(os.path.join(gdat.pathdata, 'ffis'))
